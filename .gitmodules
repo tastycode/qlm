@@ -1,0 +1,3 @@
+[submodule "deps/synth"]
+	path = deps/synth
+	url = https://github.com/shuttle-hq/synth

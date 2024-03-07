@@ -1,0 +1,17 @@
+FROM rust:1.56
+
+# Set the working directory to the root of your workspace
+WORKDIR /workspace
+
+# Copy the entire workspace into the Docker image
+COPY . .
+
+# This is crucial: It ensures we're building the `synth` package within the context of the workspace
+# Adjust the path as necessary if `synth` is not directly in the root of your workspace
+WORKDIR /workspace/synth
+
+# Build the dependencies (and your project) within the context of the workspace
+RUN cargo build --release --workspace
+
+
+CMD ["synth"]
